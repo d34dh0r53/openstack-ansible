@@ -28,4 +28,4 @@
     - role: "filebeat"
 
   tags:
-    - rpc
+    - elk_stack

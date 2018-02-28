@@ -30,4 +30,4 @@
     - elasticsearch_host: "{{ hostvars[groups['elasticsearch'][0]]['container_address'] }}"
 
   tags:
-    - rpc
+    - elk_stack

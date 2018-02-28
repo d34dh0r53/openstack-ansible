@@ -77,4 +77,4 @@
     is_metal: "{{ properties.is_metal | default(False) }}"
 
   tags:
-    - rpc
+    - elk_stack
