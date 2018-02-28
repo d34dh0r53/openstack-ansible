@@ -7,7 +7,6 @@
 # a variable. Putting these variables in here ensures the repo_build
 # role can interpolate the variables correctly.
 elasticsearch_version: 5.6.5
-elasticsearch_reindex_version: 1.7.5
 
 es_instance_name: "openstack"
 es_data_dirs: "/var/lib/elasticsearch"
