@@ -15,6 +15,8 @@ es_scripts: false
 es_templates: false
 es_version_lock: false
 es_heap_size: 1g
+elasticsearch_http_port: 9200
+elasticsearch_tcp_port: 9300
 es_api_host: "{{ container_address }}"
 es_api_port: "{{ elasticsearch_http_port }}"
 es_version: "{{ elasticsearch_version }}"
