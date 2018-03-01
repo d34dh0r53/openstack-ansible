@@ -353,3 +353,27 @@ haproxy_default_services:
       haproxy_timeout_server: 5000s
       haproxy_whitelist_networks: "{{ haproxy_opendaylight_whitelist_networks }}"
       haproxy_service_enabled: "{{ neutron_plugin_type == 'ml2.opendaylight' }}"
+## ELK Services      
+  - service:
+      haproxy_service_name: elasticsearch
+      haproxy_backend_nodes: "{{ groups['elasticsearch_all'] | default([]) }}"
+      haproxy_ssl: False
+      haproxy_port: "{{ elasticsearch_http_port }}"
+      haproxy_balance_type: http
+      haproxy_backend_options:
+        - "forwardfor"
+        - "httpchk /healthcheck"
+        - "httplog"
+  - service:
+      haproxy_service_name: elasticsearch-tcp
+      haproxy_backend_nodes: "{{ groups['elasticsearch_all'] | default([]) }}"
+      haproxy_port: "{{ elasticsearch_tcp_port }}"
+      haproxy_balance_type: tcp
+  - service:
+      haproxy_service_name: kibana_ssl
+      haproxy_ssl: False
+      haproxy_backend_nodes: "{{ groups['kibana_all'] | default([]) }}"
+      haproxy_port: 8443
+      haproxy_balance_type: tcp
+      haproxy_backend_options:
+        - "ssl-hello-chk"
